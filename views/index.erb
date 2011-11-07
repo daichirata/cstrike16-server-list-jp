@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>[JP] CS1.6 Server List</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.css" >
+        <link rel="stylesheet" href="/stylesheet.css" >
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="/javascript/jquery.tablesorter.min.js"></script>
+        <script type="text/javascript" src="/application.js"></script>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <header class="page-header">
+                <h1>[JP] CS1.6 Server List <small>This list is returned by the Steam Master server.</small></h1>
+            </header>
+            <table class="zebra-striped" id="sortTable">
+                <thead>
+                    <tr>
+                        <th>Pass</th>
+                        <th class="blue">Server Name</th>
+                        <th class="yellow">Map</th>
+                        <th class="green">Players</th>
+                        <th class="red">Bots</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% @server_list.each do |s| %>
+                    <tr>
+                      <% if s.password == 1 %>
+                        <td><p class="lock-image"><%= s.password %></p></td>
+                        <td class="lock"><%= s.server_name %></td>
+                        <td class="lock"><%= s.map %></td>
+                        <td class="lock"><%= s.number_players %> / <%= s.maximum_players %></td>
+                        <td class="lock"><%= s.number_bots %></td>
+                      <% else %>
+                        <td><p class="open-image"><%= s.password %></p></td>
+                        <td><%= s.server_name %></td>
+                        <td><%= s.map %></td>
+                        <td><%= s.number_players %> / <%= s.maximum_players %></td>
+                        <td><%= s.number_bots %></td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+

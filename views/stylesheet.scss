@@ -1,0 +1,17 @@
+table#sortTable {
+    .lock{
+        color: #BFBFBF;
+    }
+    .lock-image {
+        text-indent: -9999em;
+        background: url(images/lock.gif) no-repeat;
+        width: 50px;
+        height: 40px;
+    }
+    .open-image {
+        text-indent: 9999em;
+        background: url(images/open.gif) no-repeat;
+        width: 50px;
+        height: 40px;
+    }
+}
