@@ -1,17 +1,45 @@
+.page-header {
+    padding: 30px 0;
+    height:60px;
+    h1 { float:left }
+    button#reload {
+        font-size: 130%;
+        float: right;
+    }
+}
+
+table#info-table {
+    margin-top: 20px;
+}
+
 table#sortTable {
+    td{
+        padding-top: 0;
+        padding-bottom: 0;
+        vertical-align: middle;
+        p { margin-bottom: 0; }
+
+    }
     .lock{
-        color: #BFBFBF;
+        color: #999;
+        font-size: 130%;
     }
     .lock-image {
-        text-indent: -9999em;
         background: url(images/lock.gif) no-repeat;
         width: 50px;
         height: 40px;
+        text-indent: -9999em;
+    }
+    .open{
+        font-size: 130%;
     }
     .open-image {
-        text-indent: 9999em;
         background: url(images/open.gif) no-repeat;
         width: 50px;
         height: 40px;
+        text-indent: -9999em;
+    }
+    .info,.green {
+        text-align: center;
     }
 }

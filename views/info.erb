@@ -1,0 +1,24 @@
+<% if @server_info %>
+<table class="zebra-striped" id="info-table">
+    <tr>
+        <th class="blue">Server Name</th>
+        <td><%= @server_info.server_name %></td>
+    </tr>
+    <tr>
+        <th class="yellow">Map</th>
+        <td><%= @server_info.map %></td>
+    </tr>
+    <tr>
+        <th class="red">Players</th>
+        <td><%= @server_info.number_players %> / <%= @server_info.maximum_players %></td>
+    </tr>
+    <tr>
+        <th>Bots</th>
+        <td><%= @server_info.number_bots %></td>
+    </tr>
+    <tr>
+        <th class="green">Host : Port</th>
+        <td><%= @server_info.host %>:<%= @server_info.port %></td>
+    </tr>
+</table>
+<% end %>
