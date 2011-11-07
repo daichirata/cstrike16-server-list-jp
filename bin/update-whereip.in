@@ -1,0 +1,28 @@
+#!/bin/sh
+# $Id: update-whereip.in 87 2006-05-25 08:36:52Z macks $
+
+cachedir="@CACHEDIR@"
+whereip="$(dirname $0)/whereip"
+
+dbfile="$cachedir/whereip.db"
+
+urls="
+http://ftp.apnic.net/stats/apnic/delegated-apnic-latest
+http://ftp.apnic.net/stats/iana/delegated-iana-latest
+http://ftp.apnic.net/stats/afrinic/delegated-afrinic-latest
+http://ftp.apnic.net/stats/arin/delegated-arin-latest
+http://ftp.apnic.net/stats/lacnic/delegated-lacnic-latest
+http://ftp.apnic.net/stats/ripe-ncc/delegated-ripencc-latest
+"
+
+test -d $cachedir || mkdir -p $cachedir
+
+for url in $urls; do
+  outfile=$cachedir/`basename $url`
+  test -e $outfile && rm -f $outfile
+  wget -O $outfile $url
+done
+
+echo -n "Creating DB..."
+$whereip -c $dbfile $cachedir/delegated-*-latest
+echo "done"

@@ -1,0 +1,60 @@
+#! /usr/bin/ruby
+#
+# WhereIP
+#
+# Copyright (C) 2006 macks
+# You can redistribute it and/or modify it under the terms of
+# the GNU General Public License version 2 or any later version.
+#
+# $Id: whereip.in 111 2006-06-22 06:07:58Z macks $
+
+DEFAULT_DBFILE = '@CACHEDIR@/whereip.db'
+
+require 'optparse'
+
+$: << File.dirname(__FILE__) + '/../lib'
+require 'whereip'
+require 'iso3166'
+
+progname = File.basename($0)
+option = {}
+opts = OptionParser.new("Usage: #{progname} [-i DB] [ADDRESS...]", 16)
+opts.separator("    or #{progname} -c DB FILE...")
+opts.separator("")
+opts.separator("Options:")
+opts.on("-c DBFILE", "Create DB.") {|x| option[:outdb] = x }
+opts.on("-i DBFILE", "Use specified DB. (default: #{DEFAULT_DBFILE})") {|x| option[:indb] = x }
+opts.parse!(ARGV)
+
+if option[:outdb]
+  whereip = WhereIP.new(option[:outdb])
+  whereip.update(ARGV)
+  exit
+end
+
+db = option[:indb] || DEFAULT_DBFILE
+whereip = WhereIP.load(db)
+
+def match(whereip, str, prefix = nil)
+  print prefix if prefix
+  if cc = whereip.match(str)
+    puts "#{cc}: #{ISO3166::MAP[cc]}"
+  else
+    puts "Unknown"
+  end
+end
+
+if ARGV.empty?
+  interactive = $stdin.stat.chardev? && $stdout.stat.chardev?
+  puts "initialized" if interactive
+  while line = $stdin.gets
+    prefix = "#{line.chomp}: " if not interactive
+    match(whereip, line, prefix)
+  end
+elsif ARGV.size == 1
+  match(whereip, ARGV[0])
+else # ARGV.size > 1
+  ARGV.each do |address|
+    match(whereip, address, "#{address}: ")
+  end
+end
