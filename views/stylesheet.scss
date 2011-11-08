@@ -22,8 +22,10 @@ table#sortTable {
 
     }
     .lock{
-        color: #999;
-        font-size: 130%;
+        a{
+            color: #999;
+            font-size: 130%;
+        }
     }
     .lock-image {
         background: url(images/lock.gif) no-repeat;
@@ -32,7 +34,10 @@ table#sortTable {
         text-indent: -9999em;
     }
     .open{
-        font-size: 130%;
+        a {
+            color: #404040;
+            font-size: 130%;
+        }
     }
     .open-image {
         background: url(images/open.gif) no-repeat;

@@ -36,6 +36,16 @@ module CStrike
     # get '/application.js' do
     #   coffee :application
     # end
+    helpers do
+      def steam_link_tag(host, port, name = nil)
+        if name == nil
+          link = host.to_s + ":" + port.to_s
+        else
+          link = name
+        end
+        %Q[<a href="steam://connect/#{host}:#{port}">#{link}</a>]
+      end
+    end
   end
 end
 

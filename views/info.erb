@@ -17,8 +17,8 @@
         <td><%= @server_info.number_bots %></td>
     </tr>
     <tr>
-        <th class="green">Host : Port</th>
-        <td><%= @server_info.host %>:<%= @server_info.port %></td>
+        <th class="green">IP</th>
+        <td><%= steam_link_tag @server_info.host, @server_info.port %></td>
     </tr>
 </table>
 <% end %>

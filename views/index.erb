@@ -38,10 +38,10 @@
                         <tr>
                           <% if s.password == 1 %>
                             <td><p class="lock-image"><%= s.password %></p></td>
-                            <td class="lock"><%= s.server_name %></td>
+                            <td class="lock"><%= steam_link_tag(s.host, s.port, s.server_name) %></td>
                           <% else %>
                             <td><p class="open-image"><%= s.password %></p></td>
-                            <td class="open"><%= s.server_name %></td>
+                            <td class="open"><%= steam_link_tag(s.host, s.port, s.server_name) %></td>
                           <% end %>
                           <td class="info">
                               <a href="/info/<%= s.host %>/<%= s.port %>" rel="prettyPopin">
