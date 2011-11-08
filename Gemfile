@@ -13,3 +13,6 @@ gem 'activesupport', '3.1.1'
 
 gem 'sass'
 gem 'coffee-script'
+
+group :production do 
+end
