@@ -5,7 +5,6 @@ gem 'rack', '1.3.5'
 gem 'rack-flash', '0.1.1'
 gem 'dalli'
 gem 'bundler', '~> 1.0.7'
-gem 'therubyracer'
 gem 'sinatra', '1.3.1'
 gem 'steam-condenser', '1.0.2'
 
