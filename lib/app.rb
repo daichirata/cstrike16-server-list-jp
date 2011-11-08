@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'erb'
 require 'sass'
-require 'coffee-script'
+# require 'coffee-script'
 require 'dalli'
 require 'active_support/all'
 
@@ -33,9 +33,9 @@ module CStrike
       scss :stylesheet
     end
 
-    get '/application.js' do
-      coffee :application
-    end
+    # get '/application.js' do
+    #   coffee :application
+    # end
   end
 end
 

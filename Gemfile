@@ -12,7 +12,7 @@ gem 'i18n', '0.5.0'
 gem 'activesupport', '3.1.1'
 
 gem 'sass'
-gem 'coffee-script'
+#gem 'coffee-script'
 
-group :production do 
+group :production do
 end
